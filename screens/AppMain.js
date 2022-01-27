@@ -27,7 +27,7 @@ const AppMain = () => {
           headerShown: false,
         }}
       >
-        {!currentProperty && (
+        {currentProperty && (
           <>
             <Stack.Screen name="BeforeSplash" component={BeforeSplash} />
             <Stack.Screen name="Splash" component={Splash} />
@@ -36,7 +36,7 @@ const AppMain = () => {
             <Stack.Screen name="Recovery" component={Recovery} />
           </>
         )}
-        {currentProperty && (
+        {!currentProperty && (
           <>
             <Stack.Screen name="Home" component={Home} />
           </>

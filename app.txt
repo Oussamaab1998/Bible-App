@@ -1,0 +1,70 @@
+import "react-native-gesture-handler";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button, Alert } from "react-native";
+import { Provider } from "react-redux";
+import AppMain from "./screens/AppMain";
+import store from "./redux/createStore";
+import { useStripe, CardField } from "@stripe/stripe-react-native";
+import { StripeProvider as _StripeProvider } from '@stripe/stripe-react-native';
+import type { Props as StripeProviderProps } from '@stripe/stripe-react-native/lib/typescript/src/components/StripeProvider';
+const StripeProvider = _StripeProvider as React.FC<StripeProviderProps>;
+const App = () => {
+    return (
+        <StripeProvider
+            publishableKey="pk_test_2Fr70nsDAtUaKwlIx73qEw8p"
+            merchantIdentifier="merchant.identifier"
+        >
+            {/* <Provider store={store}> */}
+            {/* <AppMain /> */}
+            <View>
+                <StripeTest />
+            </View>
+            {/* </Provider> */}
+        </StripeProvider>
+    );
+};
+
+const StripeTest = () => {
+    const [key, setKey] = useState('');
+    const { confirmPayment } = useStripe();
+    useEffect(() => {
+        fetch("http://192.168.1.12:3000/create-payment-intent", {
+            method: "POST",
+        })
+            .then((res) => res.json())
+            .then((res) => {
+
+                const intent = res as { clientSecret: string };
+                Alert.alert(intent.clientSecret);
+                setKey(intent.clientSecret)
+            });
+    }, []);
+    const handlePayment = async () => {
+        const { error } = await confirmPayment(key, {
+            type: 'Card',
+            billingDetails: {
+                email: 'oussama.abdallah.1998@gmail.com',
+            },
+        });
+        if (error) {
+            Alert.alert('error ', error.message)
+        }
+        else {
+            Alert.alert('Payment successful!');
+        }
+    };
+    return (
+        <View>
+            <CardField
+                postalCodeEnabled={false}
+                style={{
+                    height: 50,
+                    width: "100%",
+                }}
+            />
+            <Button title="Pay now" onPress={handlePayment} />
+        </View>
+    );
+};
+
+export default App;
