@@ -12,17 +12,19 @@ import Bible from "./Root/Bible";
 import Quiz from "./Root/Quiz";
 import Me from "./Root/Me";
 import { AccessibilityInfo } from 'react-native-web';
-
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import TobBarNav from "./Root/TobBarNav";
 // Import Screens End //
 
 const TabArr = [
-  { route: 'Today', label: 'Today', component: Today, iconType: "MaterialCommunityIcons", activeIcon: 'calendar-month', inActiveIcon: 'calendar-month-outline' },
+
   { route: 'Bible', label: 'Bible', component: Bible, iconType: "FontAwesome5", activeIcon: 'bible', inActiveIcon: 'bible' },
   { route: 'Quiz', label: 'Quiz', component: Quiz, iconType: "MaterialCommunityIcons", activeIcon: 'comment-question', inActiveIcon: 'comment-question-outline' },
   { route: 'Me', label: 'Me', component: Me, iconType: "FontAwesome", activeIcon: 'user', inActiveIcon: 'user-o' }
 ]
 
 const Tab = createBottomTabNavigator();
+
 const TabButtonForToday = (props) => {
   const { item, onPress, accessibilityState } = props;
   const focused = accessibilityState.selected;
@@ -37,12 +39,15 @@ const TabButtonForToday = (props) => {
     </TouchableOpacity>
   )
 }
-const TabButtonForBible = (props) => {
-  const { onPress } = props;
+const TabButtonForSpecialOne = (props) => {
+  const { onPress, accessibilityState } = props;
+  const focused = accessibilityState.selected;
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <FontAwesome5
-        name={"bible"}
+    <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={1}>
+      <Icon
+        type='MaterialCommunityIcons'
+        name='calendar-month'
+        color={focused ? COLORS.primary : '#939393'}
         size={26}
       />
     </TouchableOpacity>
@@ -94,6 +99,23 @@ const Home = () => {
           },
         }}
       >
+
+        <Tab.Screen
+
+          name='Today'
+          component={TobBarNav}
+          options={{
+            tabBarLabel: 'Today',
+            tabBarIcon: ({ color, focused }) => (
+              <MaterialCommunityIcons
+                name={focused ? 'calendar-month' : 'calendar-month-outline'}
+                color={color}
+                size={26}
+              />
+            ),
+            tabBarButton: (props) => <TabButtonForSpecialOne {...props} />
+          }}
+        />
         {TabArr.map((item, index) => {
           return (
             <Tab.Screen

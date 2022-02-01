@@ -10,7 +10,7 @@ import {
   Recovery,
   Home,
 } from "./index.js";
-
+import QuizQuestion from "./Root/QuizQuestion.js";
 const Stack = createStackNavigator();
 
 const mapState = ({ user }) => ({
@@ -39,6 +39,7 @@ const AppMain = () => {
         {!currentProperty && (
           <>
             <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="QuizQuestion" component={QuizQuestion} />
           </>
         )}
       </Stack.Navigator>

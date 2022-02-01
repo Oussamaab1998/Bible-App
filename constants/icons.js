@@ -1,5 +1,9 @@
-// const access = require('../assets/icons/access.png');
+const trophy = require("../assets/images/trophy.png");
+const img1 = require("../assets/images/img1.png");
+const sound = require("../assets/images/sound.png");
 
 export default {
-  // access,
+  trophy,
+  img1,
+  sound,
 };
