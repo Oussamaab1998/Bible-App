@@ -14,6 +14,7 @@ import Me from "./Root/Me";
 import { AccessibilityInfo } from 'react-native-web';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import TobBarNav from "./Root/TobBarNav";
+import { createStackNavigator } from "@react-navigation/stack";
 // Import Screens End //
 
 const TabArr = [
@@ -92,12 +93,14 @@ const Home = () => {
             height: 80,
             paddingBottom: 10,
             paddingTop: 10,
+
           },
           tabBarLabelStyle: {
             fontSize: 18,
             fontFamily: 'SegoeSemibold'
           },
         }}
+        backBehavior="none"
       >
 
         <Tab.Screen

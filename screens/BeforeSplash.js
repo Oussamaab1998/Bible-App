@@ -23,32 +23,32 @@ const BeforeSplash = ({ navigation }) => {
   ];
 
   // Our Functions
-  const getRandomVerseWithShortLength = async() => {
+  const getRandomVerseWithShortLength = async () => {
     try {
-        const response = await fetch(
-          "https://labs.bible.org/api/?passage=random&type=json"
-        );
-        const json = await response.json();
-        console.log(json[0].text);
-       return json[0].text;
-      } catch (error) {
-        console.error(error);
-      }
+      const response = await fetch(
+        "https://labs.bible.org/api/?passage=random&type=json"
+      );
+      const json = await response.json();
+      console.log(json[0].text);
+      return json[0].text;
+    } catch (error) {
+      console.error(error);
+    }
   }
   const getRandpmVerse = async () => {
-      let times = 0;
+    let times = 0;
     let returnValue = await getRandomVerseWithShortLength();
-    if (returnValue.length < 90 || times === 10){
-        setVerseOfTheDay(returnValue)
-        console.log("*****************",returnValue)
-        return returnValue
-    }else{
-        times = times + 1;
-        console.log("*****************",returnValue)
-        getRandpmVerse();
-      
+    if (returnValue.length < 90 || times === 10) {
+      setVerseOfTheDay(returnValue)
+      console.log("*****************", returnValue)
+      return returnValue
+    } else {
+      times = times + 1;
+      console.log("*****************", returnValue)
+      getRandpmVerse();
+
     }
-      
+
 
 
   };
@@ -93,11 +93,11 @@ const BeforeSplash = ({ navigation }) => {
             resizeMode="contain"
           />
           <View style={styles.buttonsContainer}>
-         <TouchableOpacity
-          style={styles.nextBtn}
-          onPress={handleNextButtonClick}>
-            <Text style={styles.btnText}>Next</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.nextBtn}
+              onPress={handleNextButtonClick}>
+              <Text style={styles.btnText}>Next</Text>
+            </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>
@@ -109,16 +109,16 @@ export default BeforeSplash;
 
 const styles = StyleSheet.create({
   buttonsContainer: {
-    marginBottom:80,
-    justifyContent:"center",
-    alignItems:'center'
+    marginBottom: 80,
+    justifyContent: "center",
+    alignItems: 'center'
   },
-  nextBtn : {
-    
+  nextBtn: {
+
 
   },
-  btnText:{
-    backgroundColor: COLORS.greenColor,
+  btnText: {
+    backgroundColor: '#D5A331',
     color: "white",
     fontSize: 18,
     alignItems: "center",

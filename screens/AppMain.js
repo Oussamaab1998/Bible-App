@@ -11,6 +11,8 @@ import {
   Home,
 } from "./index.js";
 import QuizQuestion from "./Root/QuizQuestion.js";
+import BibleSerch from "./Root/today-screens/BibleSerch.js";
+import BookSearch from "./Root/BookSearch.js";
 const Stack = createStackNavigator();
 
 const mapState = ({ user }) => ({
@@ -27,7 +29,7 @@ const AppMain = () => {
           headerShown: false,
         }}
       >
-        {currentProperty && (
+        {!currentProperty && (
           <>
             <Stack.Screen name="BeforeSplash" component={BeforeSplash} />
             <Stack.Screen name="Splash" component={Splash} />
@@ -36,10 +38,11 @@ const AppMain = () => {
             <Stack.Screen name="Recovery" component={Recovery} />
           </>
         )}
-        {!currentProperty && (
+        {currentProperty && (
           <>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="QuizQuestion" component={QuizQuestion} />
+            <Stack.Screen name="BookSearch" component={BookSearch} />
           </>
         )}
       </Stack.Navigator>

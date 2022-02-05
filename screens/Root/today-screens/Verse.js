@@ -67,7 +67,12 @@ const Verse = () => {
                         <Text style={{ color: ' rgba(138, 138, 138, 1)', lineHeight: 22, fontSize: 18, marginBottom: 10 }}>Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt.</Text>
                     </View>
                 </View>
-
+                <TouchableOpacity
+                    style={styles.prayButton}
+                    onPress={() => console.log('hello there')}
+                >
+                    <Text style={styles.prayButtonText}>Amen</Text>
+                </TouchableOpacity>
 
             </ScrollView>
         </SafeAreaView>
@@ -75,7 +80,18 @@ const Verse = () => {
 };
 const screenHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
-
+    prayButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 20
+    },
+    prayButton: {
+        backgroundColor: '#36BF49',
+        height: 45,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%'
+    },
     sunImg: {
 
 

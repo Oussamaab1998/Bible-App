@@ -39,8 +39,8 @@ const Register = ({ navigation }) => {
   console.log("currentProperty =>", currentProperty);
   console.log("errors =>", errors);
 
-  const [firstName, onChangefirstName] = useState("Alex jj");
-  const [email, onChangeEmail] = useState("Alex@gmail.com");
+  const [firstName, onChangefirstName] = useState("Bible User");
+  const [email, onChangeEmail] = useState("bibleuser@gmail.com");
   const [password, onChangepassword] = useState("hellodude");
   const [isSelected, setSelected] = useState(false);
   const [isSecure, setIsSecure] = useState(true);
@@ -112,7 +112,7 @@ const Register = ({ navigation }) => {
       setTermsErrors("");
     }
     if (checking_form === "true") {
-      dispatch(signUpUser({ firstName, email, password}));
+      dispatch(signUpUser({ firstName, email, password }));
     }
   };
   const handleSignIn = () => {

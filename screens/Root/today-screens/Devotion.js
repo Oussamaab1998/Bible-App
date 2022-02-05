@@ -5,80 +5,86 @@ import { AntDesign } from '@expo/vector-icons';
 import { useFonts, Quicksand_700Bold } from "@expo-google-fonts/quicksand";
 
 
-const Devotion = () => {
+const Devotion = ({ navigation }) => {
     let [fontsLoaded] = useFonts({
         Quicksand_700Bold,
     });
-    return (
-        <SafeAreaView style={styles.container} >
-            <ScrollView style={styles.scrollView}>
+    if (fontsLoaded) {
+        return (
+            <SafeAreaView style={styles.container} >
+                <ScrollView style={styles.scrollView}>
 
-                {/* 
+                    {/* 
         <View style={styles.navIg}>
           <Text style={styles.navIgItem}>Verse</Text>
           <Text style={styles.navIgItem}>Devotion</Text>
           <Text style={styles.navIgItem}>Mood</Text>
         </View> */}
-                <View style={styles.topCover}>
-                    <Image
-                        style={styles.coverImageTop}
-                        source={require('../../../assets/images/rectBlue.png')}
-                        resizeMethod="resize"
-                        resizeMode="cover"
-                    />
-                    <Image
-                        style={styles.abosElips}
-                        source={require('../../../assets/images/ellipse.png')}
-                        resizeMethod="resize"
-                        resizeMode="cover"
-                    />
-                    <View style={styles.flexContGreenTxtWrapper}>
-                        <Text style={[styles.boldText, styles.colorWhite, styles.fs20]}>Philippians 4:19</Text>
-                        <View style={styles.interBox}>
-                            <Text style={[styles.boldText, styles.colorWhite, styles.fs22]}>BUT MY GOD</Text>
-                            <Text style={[styles.colorWhite, styles.fs16]}>SHALL SUPPLY ALL YOUR NEED</Text>
-                            <Text style={[styles.colorWhite, styles.fs16]}>ACCORDING TO HIS RICHES</Text>
-                            <Text style={[styles.boldText, styles.colorWhite, styles.fs22]}>IN GLORY</Text>
-                            <Text style={[styles.colorWhite, styles.fs16]}>BY CHRIST JESUS.</Text>
+                    <View style={styles.topCover}>
+                        <Image
+                            style={styles.coverImageTop}
+                            source={require('../../../assets/images/rectBlue.png')}
+                            resizeMethod="resize"
+                            resizeMode="cover"
+                        />
+                        <Image
+                            style={styles.abosElips}
+                            source={require('../../../assets/images/ellipse.png')}
+                            resizeMethod="resize"
+                            resizeMode="cover"
+                        />
+                        <View style={styles.flexContGreenTxtWrapper}>
+                            <Text style={[styles.boldText, styles.colorWhite, styles.fs20]}>The Great High Priest</Text>
+                            <View style={styles.interBox}>
+                                <Text style={[styles.boldText, styles.colorWhite, styles.fs22]}>Have you ever</Text>
+                                <Text style={[styles.colorWhite, styles.fs16]}>wondered about facing</Text>
+                                <Text style={[styles.colorWhite, styles.fs16]}>judgement at the time</Text>
+                                <Text style={[styles.boldText, styles.colorWhite, styles.fs22]}>of your death ?</Text>
+                                <Text style={[styles.colorWhite, styles.fs16]}>Hebrews: 14:12-16</Text>
+                            </View>
+                        </View>
+                        <View style={styles.shareIconsView}>
+                            <Entypo name="share" size={24} color="white" /><Text style={styles.shareInfo}>25.5k</Text>
+                            <AntDesign name="hearto" size={24} color="white" /><Text style={styles.shareInfo}>30.7k</Text>
                         </View>
                     </View>
-                    <View style={styles.shareIconsView}>
-                        <Entypo name="share" size={24} color="white" /><Text style={styles.shareInfo}>25.5k</Text>
-                        <AntDesign name="hearto" size={24} color="white" /><Text style={styles.shareInfo}>30.7k</Text>
+                    <View style={styles.shadowBox}>
+                        <View style={styles.shadowBoxTitle}>
+                            <Text style={[styles.fs20, styles.titleCard]}>The Great High Priest</Text>
+                        </View>
+                        <View style={styles.cardText}>
+                            <Text style={{ color: ' rgba(138, 138, 138, 1)', lineHeight: 22, fontSize: 18, marginBottom: 10 }}>Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt.</Text>
+                        </View>
                     </View>
-                </View>
-                <View style={styles.shadowBox}>
-                    <View style={styles.shadowBoxTitle}>
-                        <Text style={[styles.fs20, styles.titleCard]}>The Great High Priest</Text>
+                    <View style={styles.shadowBox}>
+                        <View style={styles.shadowBoxTitle}>
+                            <Text style={[styles.fs20, styles.titleCard]}>Prayer</Text>
+                        </View>
+                        <View style={styles.cardText}>
+                            <Text style={{ color: ' rgba(138, 138, 138, 1)', lineHeight: 22, fontSize: 18, marginBottom: 10 }}>Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt.</Text>
+                            <Text style={{ color: ' rgba(138, 138, 138, 1)', lineHeight: 22, fontSize: 18, marginBottom: 10 }}>Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt.</Text>
+                        </View>
                     </View>
-                    <View style={styles.cardText}>
-                        <Text style={{ color: ' rgba(138, 138, 138, 1)', lineHeight: 22, fontSize: 18, marginBottom: 10 }}>Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt.</Text>
-                    </View>
-                </View>
-                <View style={styles.shadowBox}>
-                    <View style={styles.shadowBoxTitle}>
-                        <Text style={[styles.fs20, styles.titleCard]}>Prayer</Text>
-                    </View>
-                    <View style={styles.cardText}>
-                        <Text style={{ color: ' rgba(138, 138, 138, 1)', lineHeight: 22, fontSize: 18, marginBottom: 10 }}>Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt.</Text>
-                        <Text style={{ color: ' rgba(138, 138, 138, 1)', lineHeight: 22, fontSize: 18, marginBottom: 10 }}>Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do eiusmod tempor incididunt.</Text>
-                    </View>
-                </View>
-                <TouchableOpacity
-                    style={styles.prayButton}
+                    <TouchableOpacity
+                        style={styles.prayButton}
+                        onPress={() => navigation.goBack()}
+                    >
+                        <Text style={styles.prayButtonText}>Amen</Text>
+                    </TouchableOpacity>
 
-                >
-                    <Text style={styles.prayButtonText}>Press Here</Text>
-                </TouchableOpacity>
+                </ScrollView>
+            </SafeAreaView>
+        );
+    } else return (<Text>Hi</Text>)
 
-            </ScrollView>
-        </SafeAreaView>
-    );
+
 };
 const screenHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     prayButtonText: {
         color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 20
     },
     prayButton: {
         backgroundColor: '#36BF49',
