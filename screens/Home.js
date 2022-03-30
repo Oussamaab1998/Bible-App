@@ -15,14 +15,19 @@ import { AccessibilityInfo } from 'react-native-web';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import TobBarNav from "./Root/TobBarNav";
 import { createStackNavigator } from "@react-navigation/stack";
+import BookSearch from "./Root/BookSearch";
+import { getJSDocImplementsTags } from "typescript";
 // Import Screens End //
 
 const TabArr = [
 
-  { route: 'Bible', label: 'Bible', component: Bible, iconType: "FontAwesome5", activeIcon: 'bible', inActiveIcon: 'bible' },
+  { route: 'BookSearch', label: 'Bible', component: BookSearch, iconType: "FontAwesome5", activeIcon: 'bible', inActiveIcon: 'bible' },
   { route: 'Quiz', label: 'Quiz', component: Quiz, iconType: "MaterialCommunityIcons", activeIcon: 'comment-question', inActiveIcon: 'comment-question-outline' },
   { route: 'Me', label: 'Me', component: Me, iconType: "FontAwesome", activeIcon: 'user', inActiveIcon: 'user-o' }
 ]
+
+
+
 
 const Tab = createBottomTabNavigator();
 

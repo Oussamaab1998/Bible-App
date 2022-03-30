@@ -8,7 +8,7 @@ import store from "./redux/createStore";
 const App = () => {
     return (
         <Provider store={store}>
-            <AppMain />
+
         </Provider>
     );
 };
